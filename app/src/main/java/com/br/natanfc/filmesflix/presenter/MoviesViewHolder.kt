@@ -16,4 +16,9 @@ class MoviesViewHolder(private val item: MovieItemLayoutBinding) : RecyclerView.
             }
         }
     }
+    fun setClickListener(movieClickListener: () -> Unit) {
+        item.root.setOnClickListener {
+            movieClickListener.invoke()
+        }
+    }
 }

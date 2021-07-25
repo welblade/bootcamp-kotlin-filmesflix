@@ -30,4 +30,9 @@ class MovieDataSourceImplementation(private val movieRestApiTask: MovieRestApiTa
         return movieList
     }
 
+    override fun getMovieById(id: Int): Movie? {
+        val movies = getAllMovies()
+        return movies.find { it.id ==  id}
+    }
+
 }

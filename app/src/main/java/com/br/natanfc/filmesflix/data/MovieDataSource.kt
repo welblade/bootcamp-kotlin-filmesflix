@@ -5,5 +5,5 @@ import com.br.natanfc.filmesflix.domain.Movie
 interface MovieDataSource {
 
     fun getAllMovies(): List<Movie>
-
+    fun getMovieById(id: Int): Movie?
 }
