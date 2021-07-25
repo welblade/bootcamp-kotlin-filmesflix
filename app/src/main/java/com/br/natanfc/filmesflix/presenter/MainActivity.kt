@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.br.natanfc.filmesflix.R
+import com.br.natanfc.filmesflix.databinding.ActivityMainBinding
 import com.br.natanfc.filmesflix.domain.Movie
 import com.br.natanfc.filmesflix.framework.viewmodel.MovieListViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var movieListViewModel: MovieListViewModel
+    private val activityMainBinding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,14 +36,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun populateList(list: List<Movie>) {
-        moviesList.apply {
+        activityMainBinding.moviesList.apply {
             hasFixedSize()
             adapter = MoviesAdapter(list)
         }
     }
 
     private fun loadingVisibility(isLoading: Boolean) {
-        progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        activityMainBinding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
 }
